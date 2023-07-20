@@ -16,11 +16,8 @@ end
 
 local opts = {
   server = {
-    checkOnSave = {
     on_attach = on_attach,
     capabilities = capabilities,
-      allFeatures = true,
-    },
   },
   dap = { adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path) },
 }
