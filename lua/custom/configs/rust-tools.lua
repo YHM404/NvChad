@@ -7,14 +7,11 @@ local codelldb_root = mason_registry.get_package("codelldb"):get_install_path() 
 local codelldb_path = codelldb_root .. "adapter/codelldb"
 
 local liblldb_path = codelldb_root .. "lldb/lib/liblldb"
-if (vim.fn.has('macunix'))
-then
-  liblldb_path = liblldb_path .. ".dylib"
-elseif (vim.fn.has('linux'))
+if (vim.loop.os_uname().sysname == "Linux")
 then
   liblldb_path = liblldb_path .. ".so"
 else
-   liblldb_path = liblldb_path .. ".dll"
+  liblldb_path = liblldb_path .. ".dylib"
 end
 
 local opts = {
